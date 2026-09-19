@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: "从这里开始"
 description: "给这个博客写下第一句话，也给往后的随笔留一个位置。"
 pubDate: "2026-09-19"

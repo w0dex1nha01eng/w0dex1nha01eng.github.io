@@ -2,12 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PathNav from '../components/PathNav.astro';
 import asukaArt from '../art/asuka.txt?raw';
+import { getPublishedPosts, postUrl } from '../lib/posts.mjs';
 
-const modules = import.meta.glob('./posts/*.md', { eager: true });
-const posts = Object.values(modules)
-  .map((post) => ({ ...post.frontmatter, url: post.url }))
-  .filter((post) => !post.draft)
-  .sort((a, b) => b.pubDate.localeCompare(a.pubDate));
+const posts = (await getPublishedPosts()).reverse();
 
 const formatDate = (value) => new Intl.DateTimeFormat('zh-CN', {
   year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai',
@@ -32,12 +29,12 @@ const formatDate = (value) => new Intl.DateTimeFormat('zh-CN', {
 
     <div class="post-list">
       {posts.map((post) => (
-        <a class="post-row" href={post.url}>
+        <a class="post-row" href={postUrl(post)}>
           <span class="post-main">
-            <strong>{post.title}</strong>
-            <span class="post-summary">{post.description}</span>
+            <strong>{post.data.title}</strong>
+            <span class="post-summary">{post.data.description}</span>
           </span>
-          <span class="post-date">{formatDate(post.pubDate)}</span>
+          <span class="post-date">{formatDate(post.data.pubDate)}</span>
         </a>
       ))}
     </div>

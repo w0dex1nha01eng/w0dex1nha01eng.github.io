@@ -15,11 +15,10 @@ npm run dev
 
 ## 写新文章
 
-在 `src/pages/posts/` 新建一个 `.md` 文件。文件名会成为网址，例如 `weekend.md` 对应 `/posts/weekend/`。
+在 `src/content/posts/` 新建一个 `.md` 文件。文件名会成为网址，例如 `weekend.md` 对应 `/posts/weekend/`。
 
 ```md
 ---
-layout: ../../layouts/PostLayout.astro
 title: "文章标题"
 description: "用一句话介绍这篇文章。"
 pubDate: "2026-09-19"
@@ -28,7 +27,7 @@ pubDate: "2026-09-19"
 从这里开始写正文。支持 **Markdown**。
 ```
 
-首页会自动按 `pubDate` 从新到旧排列文章。需要暂时隐藏文章时，在头部加 `draft: true`，并把文章移出 `src/pages/posts/`，否则 Astro 仍会生成其公开网址。发布前请替换或删除示例文章 `src/pages/posts/first-note.md`。
+首页会自动按 `pubDate` 从新到旧排列文章；文章底部的“上一篇／下一篇”也按日期连接。需要暂时隐藏文章时，在头部加 `draft: true`。发布前请替换或删除示例文章 `src/content/posts/first-note.md`。
 
 站名、简介和导航在 `src/layouts/BaseLayout.astro`；首页介绍在 `src/pages/index.astro`；关于页在 `src/pages/about.astro`。
 
