@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import asukaArt from '../art/asuka.txt?raw';
+
+const modules = import.meta.glob('./posts/*.md', { eager: true });
+const posts = Object.values(modules)
+  .map((post) => ({ ...post.frontmatter, url: post.url }))
+  .filter((post) => !post.draft)
+  .sort((a, b) => b.pubDate.localeCompare(a.pubDate));
+
+const formatDate = (value) => new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai',
+}).format(new Date(`${value}T00:00:00+08:00`));
+---
+
+<BaseLayout>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="hero-label">个人博客 / w0dex1nha01eng</p>
+      <h1 id="hero-title">&lt;随笔 /&gt;</h1>
+      <p>一些日常，一些想法。以后也可能写写技术。</p>
+    </div>
+    <pre class="ascii-art" aria-label="明日香的字符画" role="img">{asukaArt}</pre>
+  </section>
+
+  <section class="archive" aria-labelledby="archive-title">
+    <div class="section-heading">
+      <h2 id="archive-title">文章</h2>
+      <span class="article-count">{posts.length} 篇</span>
+    </div>
+
+    <div class="post-list">
+      {posts.map((post) => (
+        <a class="post-row" href={post.url}>
+          <span class="post-main">
+            <span class="post-category">{post.category}</span>
+            <strong>{post.title}</strong>
+            <span class="post-summary">{post.description}</span>
+          </span>
+          <span class="post-date">{formatDate(post.pubDate)}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

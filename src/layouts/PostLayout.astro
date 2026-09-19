@@ -1,0 +1,22 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { frontmatter } = Astro.props;
+const date = new Date(`${frontmatter.pubDate}T00:00:00+08:00`);
+const dateLabel = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Shanghai',
+}).format(date);
+---
+
+<BaseLayout title={`${frontmatter.title} · w0dex1nha01eng`} description={frontmatter.description}>
+  <article class="post-page">
+    <a class="back-link" href="/">← 返回文章</a>
+    <header class="post-header">
+      <p class="eyebrow">{frontmatter.category} <span aria-hidden="true">/</span> <time datetime={frontmatter.pubDate}>{dateLabel}</time></p>
+      <h1>{frontmatter.title}</h1>
+      <p class="post-description">{frontmatter.description}</p>
+    </header>
+    <div class="prose"><slot /></div>
+    <div class="post-end">完</div>
+  </article>
+</BaseLayout>

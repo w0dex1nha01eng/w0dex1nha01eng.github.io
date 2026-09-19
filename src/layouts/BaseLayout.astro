@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+const {
+  title = '随笔 · w0dex1nha01eng',
+  description = 'w0dex1nha01eng 的个人博客。写随笔，也记录以后遇见的技术与想法。',
+} = Astro.props;
+const home = '/';
+const about = '/about/';
+const isHome = Astro.url.pathname === home;
+const isAbout = Astro.url.pathname === about;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={isHome ? '#050505' : '#0b1e2d'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={Astro.url} />
+    <title>{title}</title>
+  </head>
+  <body class={isHome ? 'theme-home' : 'theme-page'}>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href={home} aria-label="返回首页">
+          <span class="brand-name">w0dex1nha01eng</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+          <a class:list={[{ active: !isAbout }]} href={home}>文章</a>
+          <a class:list={[{ active: isAbout }]} href={about}>关于</a>
+          <a href="https://github.com/w0dex1nha01eng" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <main id="main-content"><slot /></main>
+
+      <footer class="site-footer">
+        <span>© {new Date().getFullYear()} w0dex1nha01eng</span>
+      </footer>
+    </div>
+  </body>
+</html>
