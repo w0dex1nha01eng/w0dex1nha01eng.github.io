@@ -6,9 +6,10 @@ const {
   description = 'w0dex1nha01eng 的个人博客。写随笔，也记录以后遇见的技术与想法。',
 } = Astro.props;
 const home = '/';
-const articles = '/#articles';
+const blog = '/blog/';
 const about = '/about/';
 const isHome = Astro.url.pathname === home;
+const isBlog = Astro.url.pathname === blog || Astro.url.pathname.startsWith('/posts/');
 const isAbout = Astro.url.pathname === about;
 ---
 
@@ -30,7 +31,8 @@ const isAbout = Astro.url.pathname === about;
           <span class="brand-name">w0dex1nha01eng</span>
         </a>
         <nav class="site-nav" aria-label="主导航">
-          <a class:list={[{ active: !isAbout }]} href={articles}>文章</a>
+          <a class:list={[{ active: isHome }]} href={home}>Home</a>
+          <a class:list={[{ active: isBlog }]} href={blog}>Blog</a>
           <a class:list={[{ active: isAbout }]} href={about}>关于</a>
           <a href="https://github.com/w0dex1nha01eng" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>

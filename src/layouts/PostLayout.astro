@@ -12,7 +12,7 @@ const dateLabel = new Intl.DateTimeFormat('zh-CN', {
 
 <BaseLayout title={`${frontmatter.title} · w0dex1nha01eng`} description={frontmatter.description}>
   <article class="post-page">
-    <PathNav segments={[{ label: '文章', href: '/#articles' }, { label: frontmatter.title }]} />
+    <PathNav segments={[{ label: 'Blog', href: '/blog/' }, { label: frontmatter.title }]} />
     <header class="post-header">
       <p class="eyebrow"><time datetime={frontmatter.pubDate}>{dateLabel}</time></p>
       <h1>{frontmatter.title}</h1>

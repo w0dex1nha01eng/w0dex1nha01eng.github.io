@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PathNav from '../components/PathNav.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts.mjs';
+
+const posts = (await getPublishedPosts()).reverse();
+---
+
+<BaseLayout title="Blog · w0dex1nha01eng" description="w0dex1nha01eng 的随笔与记录，按日期排列。">
+  <div class="blog-page">
+    <PathNav segments={[{ label: 'Blog' }]} />
+    <PostList posts={posts} title="Blog" id="blog-list" heading="h1" />
+  </div>
+</BaseLayout>

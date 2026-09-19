@@ -35,7 +35,7 @@ main { flex: 1; }
 
 .archive { padding: 88px 0 120px; scroll-margin-top: 25px; }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 25px; }
-.section-heading h2 { margin: 0; font-size: 23px; font-weight: 600; }
+.section-heading h1, .section-heading h2 { margin: 0; font-size: 23px; font-weight: 600; }
 .article-count, .eyebrow, .post-date { font-family: Consolas, "Courier New", monospace; font-size: 12px; }
 .article-count, .post-date { color: var(--muted); }
 .post-list { border-top: 1px solid var(--fg); }
@@ -69,6 +69,9 @@ a.post-pagination-link:hover { background: var(--fg); color: var(--bg); }
 .about-page { padding-top: 115px; }
 .about-page h1 { margin-bottom: 42px; }
 .about-rule { border-top: 1px solid var(--line); margin-bottom: 48px; }
+.blog-page { max-width: 850px; margin: 0 auto; padding-top: 80px; }
+.blog-page .archive { padding-top: 65px; }
+.blog-page .section-heading h1 { font-size: 48px; }
 
 @media (max-width: 950px) {
   .hero { grid-template-columns: 1fr; gap: 0; padding-top: 75px; }
@@ -94,4 +97,13 @@ a.post-pagination-link:hover { background: var(--fg); color: var(--bg); }
   .post-header { margin-top: 60px; }
   .prose { font-size: 17px; }
   .post-pagination-link { min-width: 0; width: 50%; padding: 12px; font-size: 12px; }
+  .blog-page { padding-top: 55px; }
+  .blog-page .archive { padding-top: 50px; }
+  .blog-page .section-heading h1 { font-size: 38px; }
+}
+
+@media (max-width: 440px) {
+  .site-header { flex-wrap: wrap; justify-content: flex-start; align-content: center; gap: 12px 0; padding: 15px 0; }
+  .brand, .site-nav { width: 100%; }
+  .site-nav { gap: 22px; }
 }

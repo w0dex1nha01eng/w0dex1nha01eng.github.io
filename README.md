@@ -29,7 +29,7 @@ pubDate: "2026-09-19"
 
 首页会自动按 `pubDate` 从新到旧排列文章；文章底部的“上一篇／下一篇”也按日期连接。需要暂时隐藏文章时，在头部加 `draft: true`。发布前请替换或删除示例文章 `src/content/posts/first-note.md`。
 
-站名、简介和导航在 `src/layouts/BaseLayout.astro`；首页介绍在 `src/pages/index.astro`；关于页在 `src/pages/about.astro`。
+站名、简介和导航在 `src/layouts/BaseLayout.astro`；Home 在 `src/pages/index.astro`，纯列表 Blog 在 `src/pages/blog.astro`，关于页在 `src/pages/about.astro`。
 
 ## 发布到 GitHub Pages
 
