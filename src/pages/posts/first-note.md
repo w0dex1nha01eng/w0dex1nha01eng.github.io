@@ -3,7 +3,6 @@ layout: ../../layouts/PostLayout.astro
 title: "从这里开始"
 description: "给这个博客写下第一句话，也给往后的随笔留一个位置。"
 pubDate: "2026-09-19"
-category: "随笔"
 ---
 
 总想等想法足够完整，再认真写点什么。但很多念头只在当下清楚，过几天就淡了。这个博客就从一篇不必完美的开头开始。

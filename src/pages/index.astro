@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PathNav from '../components/PathNav.astro';
 import asukaArt from '../art/asuka.txt?raw';
 
 const modules = import.meta.glob('./posts/*.md', { eager: true });
@@ -16,14 +17,14 @@ const formatDate = (value) => new Intl.DateTimeFormat('zh-CN', {
 <BaseLayout>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="hero-label">个人博客 / w0dex1nha01eng</p>
+      <PathNav segments={[{ label: '文章', href: '#articles' }]} />
       <h1 id="hero-title">&lt;随笔 /&gt;</h1>
       <p>一些日常，一些想法。以后也可能写写技术。</p>
     </div>
     <pre class="ascii-art" aria-label="明日香的字符画" role="img">{asukaArt}</pre>
   </section>
 
-  <section class="archive" aria-labelledby="archive-title">
+  <section class="archive" id="articles" aria-labelledby="archive-title">
     <div class="section-heading">
       <h2 id="archive-title">文章</h2>
       <span class="article-count">{posts.length} 篇</span>
@@ -33,7 +34,6 @@ const formatDate = (value) => new Intl.DateTimeFormat('zh-CN', {
       {posts.map((post) => (
         <a class="post-row" href={post.url}>
           <span class="post-main">
-            <span class="post-category">{post.category}</span>
             <strong>{post.title}</strong>
             <span class="post-summary">{post.description}</span>
           </span>

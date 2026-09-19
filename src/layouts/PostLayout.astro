@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import PathNav from '../components/PathNav.astro';
 
 const { frontmatter } = Astro.props;
 const date = new Date(`${frontmatter.pubDate}T00:00:00+08:00`);
@@ -10,9 +11,9 @@ const dateLabel = new Intl.DateTimeFormat('zh-CN', {
 
 <BaseLayout title={`${frontmatter.title} · w0dex1nha01eng`} description={frontmatter.description}>
   <article class="post-page">
-    <a class="back-link" href="/">← 返回文章</a>
+    <PathNav segments={[{ label: '文章', href: '/#articles' }, { label: frontmatter.title }]} />
     <header class="post-header">
-      <p class="eyebrow">{frontmatter.category} <span aria-hidden="true">/</span> <time datetime={frontmatter.pubDate}>{dateLabel}</time></p>
+      <p class="eyebrow"><time datetime={frontmatter.pubDate}>{dateLabel}</time></p>
       <h1>{frontmatter.title}</h1>
       <p class="post-description">{frontmatter.description}</p>
     </header>

@@ -23,7 +23,6 @@ layout: ../../layouts/PostLayout.astro
 title: "文章标题"
 description: "用一句话介绍这篇文章。"
 pubDate: "2026-09-19"
-category: "随笔"
 ---
 
 从这里开始写正文。支持 **Markdown**。
@@ -39,11 +38,6 @@ category: "随笔"
 2. 在本目录运行：
 
    ```bash
-   git init
-   git add .
-   git commit -m "Create personal blog"
-   git branch -M main
-   git remote add origin https://github.com/w0dex1nha01eng/w0dex1nha01eng.github.io.git
    git push -u origin main
    ```
 

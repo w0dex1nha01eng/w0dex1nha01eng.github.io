@@ -1,0 +1,15 @@
+---
+const { segments = [] } = Astro.props;
+---
+
+<nav class="path-nav" aria-label="页面位置">
+  <a href="/" aria-label="返回首页">~</a>
+  {segments.map((segment) => (
+    <>
+      <span class="path-separator" aria-hidden="true">/</span>
+      {segment.href
+        ? <a href={segment.href}>{segment.label}</a>
+        : <span aria-current="page">{segment.label}</span>}
+    </>
+  ))}
+</nav>
